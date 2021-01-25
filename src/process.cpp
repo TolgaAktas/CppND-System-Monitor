@@ -31,10 +31,7 @@ long int Process::UpTime() { return upTime; }
 // DONE: Overload the "less than" comparison operator for Process objects
 // REMOVE: [[maybe_unused]] once you define the function
 bool Process::operator<(Process const& a) const {
-	if(cpu_utilization > a.cpu_utilization)
-      return true;
-  	else
-      return false;
+	return cpu_utilization < a.cpu_utilization;
 }
 
 
@@ -43,7 +40,7 @@ Process::Process(int _pid) {
   user = LinuxParser::User(pid);
   command = LinuxParser::Command(pid);
   ram = LinuxParser::Ram(pid);
-  upTime = LinuxParser::UpTime(pid);
+  upTime = LinuxParser::UpTime(pid) - LinuxParser::UpTime();
   cpu_utilization = LinuxParser::CpuUtilization(pid);
 }
 

@@ -58,7 +58,7 @@ void System::UpdateProcesses(){
   for(int pid : LinuxParser::Pids()){
     UpdateProcess(pid);
   }
-  sort(processes_.begin(),processes_.end());
+  sort(processes_.rbegin(),processes_.rend());
 }
 
 void System::UpdateProcess(int pid){
