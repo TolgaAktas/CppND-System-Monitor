@@ -40,7 +40,7 @@ Process::Process(int _pid) {
   user = LinuxParser::User(pid);
   command = LinuxParser::Command(pid);
   ram = LinuxParser::Ram(pid);
-  upTime = LinuxParser::UpTime(pid) - LinuxParser::UpTime();
+  upTime = LinuxParser::UpTime() - LinuxParser::UpTime(pid);
   cpu_utilization = LinuxParser::CpuUtilization(pid);
 }
 
